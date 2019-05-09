@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+</head>
+<style>
+  img{
+		width: 23vw;
+	}
+</style>
+
+<body>
+  <script type="text/javascript">
+    //baseURL + id + connector + random
+    let baseURL = "http://207.251.86.238/cctv";
+    let connector = ".jpg?math=";
+
+    let startId = 500;
+    let endId = 600;
+
+    let allLoaded = false;
+
+    for (let i = startId; i < endId; i++) {
+      let imgDiv = document.createElement('img');
+      imgDiv.id = i;
+      // imgDiv.setAttribute('onload', )
+      document.body.appendChild(imgDiv);
+    }
+
+    setInterval(function() {
+      for (let i = startId; i < endId; i++) {
+        if (document.getElementById(i) != null) {
+          document.getElementById(i).src = baseURL + i + connector + Math.random();
+
+          if (i == endId - 1) {
+            console.log('here');
+            allLoaded = true;
+          }
+        }
+      }
+
+      // if(allLoaded){
+      // for(let i = startId; i < endId; i++){
+      // if(document.getElementById(i) != null && document.getElementById(i).height == 0){
+      // 	document.body.removeChild(document.getElementById(i));
+      // 	console.log("removed",i);
+      // }
+      // }
+      // }
+
+    }, 1000);
+  </script>
+
+</body>
+
+</html>

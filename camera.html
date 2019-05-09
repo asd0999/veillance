@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <style>
+    img {
+      width: 20vw;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    let baseUrl = "http://207.251.86.238/cctv";
+    let startId = 1010;
+    let endId = 1020;
+    let connector = ".jpg?math=";
+    let cameraFeed = [];
+
+    for (let i = startId; i < endId; i++) {
+      cameraFeed[i] = document.createElement('img');
+      cameraFeed[i].id = i;
+      // cameraFeed[i].class = "camera";
+      document.body.appendChild(cameraFeed[i]);
+      // cameraFeed.src = baseUrl + i + connector + Math.random();
+    }
+
+    setInterval(function() {
+      for (let i = startId; i < endId; i++) {
+        if (document.getElementById(i) != null) {
+          document.getElementById(i).src = baseUrl + i + connector + Math.random();
+        }
+      }
+
+      // for (var i = endId - 1; i >= startId; i--) {
+      //   if (document.getElementById(i) != null) {
+      //     let h = document.getElementById(i).height;
+      //     if (h == 0) {
+      //       document.body.removeChild(cameraFeed[i]);
+      //     }
+      //   }
+      // }
+    }, 1000);
+  </script>
+</body>
+
+</html>
